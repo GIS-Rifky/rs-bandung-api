@@ -12,9 +12,8 @@ import (
 )
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("❌ Gagal load .env")
+	if os.Getenv("RAILWAY_ENVIRONMENT") == "" {
+		_ = godotenv.Load()
 	}
 
 	config.ConnectMongo()
